@@ -1,0 +1,225 @@
+------------------ Evaluate 0-10 in MapGPT_72_scenes_processed ------------------
+Loading navigation graphs for 10 scans
+R2RNavBatch loaded with 10 instructions, using splits: MapGPT_72_scenes_processed
+Model version: gpt-4o-2024-05-13
+Start evaluating MapGPT_72_scenes_processed
+running...
+-------------------- Environment Prompts --------------------
+Instruction: walk forward then turn right at the stairs then go down the stairs.
+History: The navigation has just begun, with no history.
+Trajectory: Place 0
+Map:
+Place 0 is connected with Places 1, 2
+Supplementary Info: Nothing yet.
+Previous Planning:
+Navigation has just started, with no planning yet.
+Action options (step 0): ['A. turn left to Place 1 which is corresponding to Image 1', 'B. turn left to Place 2 which is corresponding to Image 2']
+-------------------- Output --------------------
+{
+  "Thought": "According to the instruction, I need to walk forward then turn right at the stairs and then go down the stairs. Since I am starting from Place 0 and I can either turn left to Place 1 or Place 2. The images provided show an ornate room with furniture and a table, which do not seem to indicate the presence of stairs immediately. Therefore, I need to explore to determine if either of these places leads to stairs.",
+  "New Planning": [
+    "Explore Place 1",
+    "If no stairs, then explore Place 2",
+    "Look for a path that leads to stairs and follow the instruction further"
+  ],
+  "Action": "A"
+}
+-------------------- Environment Prompts --------------------
+Instruction: walk forward then turn right at the stairs then go down the stairs.
+History: step 0: turn left to Place 1 which is corresponding to Image 1
+Trajectory: Place 0 1
+Map:
+Place 0 is connected with Places 1, 2
+Place 1 is connected with Places 0, 3, 4, 5, 2
+Supplementary Info: Nothing yet.
+Previous Planning:
+['Explore Place 1', 'If no stairs, then explore Place 2', 'Look for a path that leads to stairs and follow the instruction further']
+Action options (step 1): ['A. turn around to Place 0 which is corresponding to Image 0', 'B. turn left to Place 3 which is corresponding to Image 3', 'C. turn right to Place 4 which is corresponding to Image 4', 'D. turn right to Place 5 which is corresponding to Image 5', 'E. turn around to Place 2 which is corresponding to Image 2']
+-------------------- Output --------------------
+{
+  "Thought": "Traveling forward from the initial position, we turned left to Place 1. The instruction mentioned going right at the stairs and then going down, but first we need to locate the stairs. From the images of Place 1, it appears that it might lead to several areas but there are no visible stairs here. According to Previous Planning, the next step if no stairs are found at this place is to explore Place 2. Given that Place 2 is connected to Place 1 from the map, it is worth exploring to continue following the instruction.",
+  "New Planning": [
+    "Explore Place 2",
+    "Look for a path that leads to stairs and follow the instruction further"
+  ],
+  "Action": "E"
+}
+-------------------- Environment Prompts --------------------
+Instruction: walk forward then turn right at the stairs then go down the stairs.
+History: step 0: turn left to Place 1 which is corresponding to Image 1, step 1: turn around to Place 2 which is corresponding to Image 2
+Trajectory: Place 0 1 2
+Map:
+Place 0 is connected with Places 1, 2
+Place 1 is connected with Places 0, 3, 4, 5, 2
+Place 2 is connected with Places 0, 1, 4, 6, 5, 7, 8, 9
+Supplementary Info: 
+Place 3, which is corresponding to Image 3
+Previous Planning:
+['Explore Place 2', 'Look for a path that leads to stairs and follow the instruction further']
+Action options (step 2): ['A. turn right to Place 0 which is corresponding to Image 0', 'B. turn around to Place 1 which is corresponding to Image 1', 'C. turn left to Place 4 which is corresponding to Image 4', 'D. turn left to Place 6 which is corresponding to Image 6', 'E. turn left to Place 5 which is corresponding to Image 5', 'F. go forward to Place 7 which is corresponding to Image 7', 'G. turn right to Place 8 which is corresponding to Image 8', 'H. turn right to Place 9 which is corresponding to Image 9']
+-------------------- Output --------------------
+{
+  "Thought": "Based on the instruction to walk forward and then turn right at the stairs, I need to explore a path that leads to stairs. Reviewing past actions and the current instruction, I should seek a place where stairs are visible. From the provided images and connections, Places 8 and 9 seem to show a staircase. As per the instruction, I should turn right at the stairs, which means turning right at Place 8 or 9. Place 8 from Image 8 appears to be a feasible option for the next move.",
+  "New Planning": ["Explore Place 8 for stairs", "Turn right and go down the stairs if found"],
+  "Action": "G"
+}
+-------------------- Environment Prompts --------------------
+Instruction: walk forward then turn right at the stairs then go down the stairs.
+History: step 0: turn left to Place 1 which is corresponding to Image 1, step 1: turn around to Place 2 which is corresponding to Image 2, step 2: turn right to Place 8 which is corresponding to Image 8
+Trajectory: Place 0 1 2 8
+Map:
+Place 0 is connected with Places 1, 2
+Place 1 is connected with Places 0, 3, 4, 5, 2
+Place 2 is connected with Places 0, 1, 4, 6, 5, 7, 8, 9
+Place 8 is connected with Places 9, 2, 4, 7, 10
+Supplementary Info: 
+Place 3, which is corresponding to Image 3
+Place 5, which is corresponding to Image 5
+Place 6, which is corresponding to Image 6
+Previous Planning:
+['Explore Place 8 for stairs', 'Turn right and go down the stairs if found']
+Action options (step 3): ['A. stop', 'B. go down to Place 9 which is corresponding to Image 9', 'C. turn around to Place 2 which is corresponding to Image 2', 'D. turn around to Place 4 which is corresponding to Image 4', 'E. turn around to Place 7 which is corresponding to Image 7', 'F. turn left to Place 10 which is corresponding to Image 10']
+-------------------- Output --------------------
+{
+  "Thought": "The instruction says to walk forward then turn right at the stairs and go down the stairs. From my History, Trajectory, and the provided images, I am currently at Place 8, which has connectivity to Place 9. Image 9 confirms that Place 9 contains a stairway going downstairs. This aligns with the instruction to go down the stairs.",
+  "New Planning": ["Go down to Place 9", "Proceed downstairs at Place 9"],
+  "Action": "B"
+}
+-------------------- Environment Prompts --------------------
+Instruction: walk forward then turn right at the stairs then go down the stairs.
+History: step 0: turn left to Place 1 which is corresponding to Image 1, step 1: turn around to Place 2 which is corresponding to Image 2, step 2: turn right to Place 8 which is corresponding to Image 8, step 3: go down to Place 9 which is corresponding to Image 9
+Trajectory: Place 0 1 2 8 9
+Map:
+Place 0 is connected with Places 1, 2
+Place 1 is connected with Places 0, 3, 4, 5, 2
+Place 2 is connected with Places 0, 1, 4, 6, 5, 7, 8, 9
+Place 8 is connected with Places 9, 2, 4, 7, 10
+Place 9 is connected with Places 11, 2, 8, 10
+Supplementary Info: 
+Place 3, which is corresponding to Image 3
+Place 4, which is corresponding to Image 4
+Place 5, which is corresponding to Image 5
+Place 6, which is corresponding to Image 6
+Place 7, which is corresponding to Image 7
+Previous Planning:
+['Go down to Place 9', 'Proceed downstairs at Place 9']
+Action options (step 4): ['A. stop', 'B. go down to Place 11 which is corresponding to Image 11', 'C. turn around to Place 2 which is corresponding to Image 2', 'D. go up to Place 8 which is corresponding to Image 8', 'E. turn around to Place 10 which is corresponding to Image 10']
+-------------------- Output --------------------
+{
+    "Thought": "I have reached Place 9, which corresponds to Image 9, and the instruction guides me to go down the stairs from here. As per the Previous Planning, I should proceed downstairs at Place 9. The appropriate action in this scenario is to continue to Place 11.",
+    "New Planning": ["Proceed downstairs to Place 11"],
+    "Action": "B"
+}
+-------------------- Environment Prompts --------------------
+Instruction: walk forward then turn right at the stairs then go down the stairs.
+History: step 0: turn left to Place 1 which is corresponding to Image 1, step 1: turn around to Place 2 which is corresponding to Image 2, step 2: turn right to Place 8 which is corresponding to Image 8, step 3: go down to Place 9 which is corresponding to Image 9, step 4: go down to Place 11 which is corresponding to Image 11
+Trajectory: Place 0 1 2 8 9 11
+Map:
+Place 0 is connected with Places 1, 2
+Place 1 is connected with Places 0, 3, 4, 5, 2
+Place 2 is connected with Places 0, 1, 4, 6, 5, 7, 8, 9
+Place 8 is connected with Places 9, 2, 4, 7, 10
+Place 9 is connected with Places 11, 2, 8, 10
+Place 11 is connected with Places 12, 9
+Supplementary Info: 
+Place 3, which is corresponding to Image 3
+Place 4, which is corresponding to Image 4
+Place 5, which is corresponding to Image 5
+Place 6, which is corresponding to Image 6
+Place 7, which is corresponding to Image 7
+Place 10, which is corresponding to Image 10
+Previous Planning:
+['Proceed downstairs to Place 11']
+Action options (step 5): ['A. stop', 'B. go down to Place 12 which is corresponding to Image 12', 'C. go up to Place 9 which is corresponding to Image 9']
+-------------------- Output --------------------
+{
+  "Thought": "Currently at Place 11 which corresponds to Image 11. The instruction was to go forward, turn right at the stairs, and then go down. The previous planning already guided me to proceed to Place 11, and now I need to continue down the stairs as the instruction indicates that the final destination is further down the stairs.",
+  "New Planning": ["Proceed downstairs to Place 12"],
+  "Action": "B"
+}
+-------------------- Environment Prompts --------------------
+Instruction: walk forward then turn right at the stairs then go down the stairs.
+History: step 0: turn left to Place 1 which is corresponding to Image 1, step 1: turn around to Place 2 which is corresponding to Image 2, step 2: turn right to Place 8 which is corresponding to Image 8, step 3: go down to Place 9 which is corresponding to Image 9, step 4: go down to Place 11 which is corresponding to Image 11, step 5: go down to Place 12 which is corresponding to Image 12
+Trajectory: Place 0 1 2 8 9 11 12
+Map:
+Place 0 is connected with Places 1, 2
+Place 1 is connected with Places 0, 3, 4, 5, 2
+Place 2 is connected with Places 0, 1, 4, 6, 5, 7, 8, 9
+Place 8 is connected with Places 9, 2, 4, 7, 10
+Place 9 is connected with Places 11, 2, 8, 10
+Place 11 is connected with Places 12, 9
+Place 12 is connected with Places 13, 11
+Supplementary Info: 
+Place 3, which is corresponding to Image 3
+Place 4, which is corresponding to Image 4
+Place 5, which is corresponding to Image 5
+Place 6, which is corresponding to Image 6
+Place 7, which is corresponding to Image 7
+Place 10, which is corresponding to Image 10
+Previous Planning:
+['Proceed downstairs to Place 12']
+Action options (step 6): ['A. stop', 'B. go forward to Place 13 which is corresponding to Image 13', 'C. go up to Place 11 which is corresponding to Image 11']
+-------------------- Output --------------------
+{
+    "Thought": "I have followed the instruction to walk forward, turn right at the stairs, and go down the stairs. I have reached Place 12. According to the instruction, I need to go down the stairs, which corresponds to Image 13. Since I'm currently at Place 12 (Image 12) and Place 13 corresponds to Image 13, the next step is to proceed downstairs to Place 13.",
+    "New Planning": [
+        "Proceed downstairs to Place 13"
+    ],
+    "Action": "B"
+}
+-------------------- Environment Prompts --------------------
+Instruction: walk forward then turn right at the stairs then go down the stairs.
+History: step 0: turn left to Place 1 which is corresponding to Image 1, step 1: turn around to Place 2 which is corresponding to Image 2, step 2: turn right to Place 8 which is corresponding to Image 8, step 3: go down to Place 9 which is corresponding to Image 9, step 4: go down to Place 11 which is corresponding to Image 11, step 5: go down to Place 12 which is corresponding to Image 12, step 6: go forward to Place 13 which is corresponding to Image 13
+Trajectory: Place 0 1 2 8 9 11 12 13
+Map:
+Place 0 is connected with Places 1, 2
+Place 1 is connected with Places 0, 3, 4, 5, 2
+Place 2 is connected with Places 0, 1, 4, 6, 5, 7, 8, 9
+Place 8 is connected with Places 9, 2, 4, 7, 10
+Place 9 is connected with Places 11, 2, 8, 10
+Place 11 is connected with Places 12, 9
+Place 12 is connected with Places 13, 11
+Place 13 is connected with Places 14, 15, 12
+Supplementary Info: 
+Place 3, which is corresponding to Image 3
+Place 4, which is corresponding to Image 4
+Place 5, which is corresponding to Image 5
+Place 6, which is corresponding to Image 6
+Place 7, which is corresponding to Image 7
+Place 10, which is corresponding to Image 10
+Previous Planning:
+['Proceed downstairs to Place 13']
+Action options (step 7): ['A. stop', 'B. go down to Place 14 which is corresponding to Image 14', 'C. go down to Place 15 which is corresponding to Image 15', 'D. turn around to Place 12 which is corresponding to Image 12']
+-------------------- Output --------------------
+{
+  "Thought": "I have followed the instruction to walk forward and go down the stairs, and I am currently at Place 13. The next instruction step involves turning right and continuing down the stairs, which indicates I should proceed further. Since I am already at Place 13, I need to continue down the stairs to either Place 14 or Place 15.",
+  "New Planning": [
+    "Continue going down to Place 14",
+    "If required, proceed to Place 15"
+  ],
+  "Action": "B"
+}
+-------------------- Environment Prompts --------------------
+Instruction: walk forward then turn right at the stairs then go down the stairs.
+History: step 0: turn left to Place 1 which is corresponding to Image 1, step 1: turn around to Place 2 which is corresponding to Image 2, step 2: turn right to Place 8 which is corresponding to Image 8, step 3: go down to Place 9 which is corresponding to Image 9, step 4: go down to Place 11 which is corresponding to Image 11, step 5: go down to Place 12 which is corresponding to Image 12, step 6: go forward to Place 13 which is corresponding to Image 13, step 7: go down to Place 14 which is corresponding to Image 14
+Trajectory: Place 0 1 2 8 9 11 12 13 14
+Map:
+Place 0 is connected with Places 1, 2
+Place 1 is connected with Places 0, 3, 4, 5, 2
+Place 2 is connected with Places 0, 1, 4, 6, 5, 7, 8, 9
+Place 8 is connected with Places 9, 2, 4, 7, 10
+Place 9 is connected with Places 11, 2, 8, 10
+Place 11 is connected with Places 12, 9
+Place 12 is connected with Places 13, 11
+Place 13 is connected with Places 14, 15, 12
+Place 14 is connected with Places 15, 16, 17, 13
+Supplementary Info: 
+Place 3, which is corresponding to Image 3
+Place 4, which is corresponding to Image 4
+Place 5, which is corresponding to Image 5
+Place 6, which is corresponding to Image 6
+Place 7, which is corresponding to Image 7
+Place 10, which is corresponding to Image 10
+Previous Planning:
+['Continue going down to Place 14', 'If required, proceed to Place 15']
+Action options (step 8): ['A. stop', 'B. go down to Place 15 which is corresponding to Image 15', 'C. go down to Place 16 which is corresponding to Image 16', 'D. go down to Place 17 which is corresponding to Image 17', 'E. go up to Place 13 which is corresponding to Image 13']

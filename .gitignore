@@ -6,6 +6,7 @@ data/
 datasets/
 ResNet-152-imagenet.tsv
 snapshots/
+MapGPT/datasets
 # plots/
 # C extensions
 *.so
