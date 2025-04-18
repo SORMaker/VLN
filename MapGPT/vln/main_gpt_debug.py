@@ -7,6 +7,7 @@ from collections import defaultdict
 import sys
 project_root = "/home/xiezy/projects/VLN-Tutorial/MapGPT"  
 sys.path.append(project_root)
+
 # revise
 
 from vln.data_utils import construct_instrs

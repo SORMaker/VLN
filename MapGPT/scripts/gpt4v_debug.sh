@@ -1,5 +1,5 @@
 DATA_ROOT=/home/xiezy/projects/VLN-Tutorial/MapGPT/datasets
-OUTDIR=${DATA_ROOT}/exprs_map/4o/test/
+OUTDIR=${DATA_ROOT}/exprs_map/4v/test/
 
 flag="--root_dir ${DATA_ROOT}
       --img_root /home/xiezy/projects/VLN-Tutorial/MapGPT/datasets/RGB_Observations
@@ -9,8 +9,8 @@ flag="--root_dir ${DATA_ROOT}
       --max_action_len 15
       --save_pred
       --stop_after 3
-      --llm gpt-4o-2024-05-13
-      --response_format json
+      --llm gpt-4-vision-preview
+      --response_format str
       --max_tokens 1000
       "
 
