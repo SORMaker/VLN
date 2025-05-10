@@ -13,7 +13,7 @@ visualization/topdown_map/output_json_files/mapgpt_json_files/*
 visualization/topdown_map/output_json_files/seq_json_files/*
 preds_200_216
 visualization/obs/tmp
-chromedriver/*
+chromedriver
 # plots/
 # C extensions
 *.so
