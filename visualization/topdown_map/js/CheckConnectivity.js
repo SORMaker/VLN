@@ -29,7 +29,7 @@ var CNODE = 0x43971e;
 
 
 var matt = new Matterport3D(DATA_DIR);
-var mesh_url = "/jolin_mesh_names.json";
+var mesh_url = "/mesh_json/jolin_mesh_names.json";
 d3.json(mesh_url, function(error, data) {
   if (error) return console.warn(error);
   mesh_names = data;
@@ -270,7 +270,7 @@ function remove_connection(obj1, obj2){
 function load_connections(scan) {
   //var url	= "https://storage.googleapis.com/bringmeaspoon/" + scan + "/matterport_camera_poses";
   //var url	= "https://storage.googleapis.com/bringmeaspoon/connectivity/"+scan+"_connectivity.json";
-  var url = "/"+scan+".json";
+  var url = "/mesh_json/"+scan+".json";
   name_to_id = {}
   d3.json(url, function(error, data) {
     if (error) return console.warn(error);

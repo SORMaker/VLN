@@ -159,7 +159,38 @@ def train_val():
                   action_embedding_size, hidden_size, dropout_ratio).cuda()
     train(train_env, encoder, decoder, n_iters, val_envs=val_envs)
 
+    # Generate test submission
+    test_env = R2RBatch(features, batch_size=batch_size, splits=['train'], tokenizer=tok)
+    agent = Seq2SeqAgent(test_env, "", encoder, decoder, max_episode_len)
+    agent.results_path = '%s%s_%s_iter_%d.json' % (RESULT_DIR, model_prefix, 'train', 20000)
+    agent.test(use_dropout=False, feedback='argmax')
+    agent.write_results()
+
+def train_submission():
+    ''' Train on combined training and validation sets, and generate test submission. '''
+
+    setup()
+    # Create a batch training environment that will also preprocess text
+    vocab = read_vocab(TRAINVAL_VOCAB)
+    tok = Tokenizer(vocab=vocab, encoding_length=MAX_INPUT_LENGTH)
+    train_env = R2RBatch(features, batch_size=batch_size, splits=['train', 'val_seen', 'val_unseen'], tokenizer=tok)
+
+    # Build models and train
+    enc_hidden_size = hidden_size//2 if bidirectional else hidden_size
+    encoder = EncoderLSTM(len(vocab), word_embedding_size, enc_hidden_size, padding_idx,
+                  dropout_ratio, bidirectional=bidirectional).cuda()
+    decoder = AttnDecoderLSTM(Seq2SeqAgent.n_inputs(), Seq2SeqAgent.n_outputs(),
+                  action_embedding_size, hidden_size, dropout_ratio).cuda()
+    train(train_env, encoder, decoder, n_iters)
+
+    # Generate test submission
+    test_env = R2RBatch(features, batch_size=batch_size, splits=['train'], tokenizer=tok)
+    agent = Seq2SeqAgent(test_env, "", encoder, decoder, max_episode_len)
+    agent.results_path = '%s%s_%s_iter_%d.json' % (RESULT_DIR, model_prefix, 'train', 20000)
+    agent.test(use_dropout=False, feedback='argmax')
+    agent.write_results()
 
 if __name__ == "__main__":
-    train_val()
-    #test_submission()
+    # train_val()
+    # test_submission()
+    train_submission()

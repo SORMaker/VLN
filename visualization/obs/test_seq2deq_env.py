@@ -25,8 +25,15 @@ def visualize_obs(obs, save_dir):
 
 env = R2RBatch(feature_store=False, enable_depth=True, batch_size=1)
 
-obs = env.reset()
-# obs = env._get_obs
 save_dir = 'tmp'
 os.makedirs(save_dir, exist_ok=True)
+
+obs = env.reset()
+env.step([(0,1,0)])
+obs = env._get_obs()
+env.step([(0,1,0)])
+obs = env._get_obs()
+env.step([(0,1,0)])
+obs = env._get_obs()
 visualize_obs(obs[0], save_dir)
+    

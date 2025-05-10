@@ -79,6 +79,18 @@ python
 import MatterSim
 ```
 ## Seq2Seq
-todo
+### Download Dataset
+1. You must first use this [link](https://pan.baidu.com/s/136EOhxRLYJSEd0ApHZ6Bhg?pwd=8888) to download the Matterport3D dataset and unzip to `duet/datasets/Matterport3D`
+2. Then you need to download the `img_features` and unzip to `duet/datasets/R2R/features/img_features` or `seq2seq/data/img_features`:
+   - [ResNet-152-imagenet features [380K/2.9GB]](https://www.dropbox.com/s/o57kxh2mn5rkx4o/ResNet-152-imagenet.zip?dl=1)
+   - [ResNet-152-places365 features [380K/2.9GB]](https://www.dropbox.com/s/85tpa6tc3enl5ud/ResNet-152-places365.zip?dl=1)
+3. Finally, you should download the [connectivity](https://pan.baidu.com/s/1_xE4-_cQUKuXlOH_e3L0tA?pwd=8888) and unzip to `duet/datasets/R2R/connectivity`
+
+### Train
+You can run `visualization/obs/test_seq2deq_env.py` and `visualization/obs/vis_panorama.py` to test your Seq2Seq environment.
+Then you can run `seq2seq/train.py` to train Seq2Seq model. After that, you can use `seq2seq/eval.py` to evaluate the model and `seq2seq/plot.py` to visualize the loss, success rate and navigation error.
 ## MapGPT
-todo
+### Download Dataset
+You must first follow the Seq2Seq Dataset. Then you should download the [MapGPT Dataset](https://pan.baidu.com/s/1vO6uHXtzxRaP_2Y8DL5Z-Q?pwd=8888) and unzip to `MapGPT/datasets`.
+
+Then you can run `MapGPT/scripts/gpt4o_debug.sh` to enjoy MapGPT.

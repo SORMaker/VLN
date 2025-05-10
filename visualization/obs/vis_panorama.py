@@ -15,8 +15,8 @@ if matterport_build_path not in sys.path:
 
 
 
-scan_dir = 'duet/datasets/Matterport3D/scans'
-connectivity_dir = 'duet/datasets/R2R/connectivity'
+scan_dir = '../../duet/datasets/Matterport3D/scans'
+connectivity_dir = '../../duet/datasets/R2R/connectivity'
 
 def visualize_panorama_img(scan, viewpoint, heading, elevation):
     WIDTH = 80
@@ -164,8 +164,8 @@ if __name__ == "__main__":
     print(os.path.abspath(scan_dir))
     # scan = "1LXtFkjw3qL"
     # viewpointId = "0b22fa63d0f54a529c525afbf2e8bb25"
-    scan = "1pXnuDYAj8r"
-    viewpointId = "0d3a3b42009441e2a02200423049d804"
+    scan = "V2XKFyX4ASd"
+    viewpointId = "0c77699c304d4126a7553456bda9da91"
     viewpoint_heading = 0
     images = get_panorama(scan, viewpointId, viewpoint_heading)
     save_dir = "tmp"

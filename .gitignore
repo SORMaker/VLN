@@ -7,6 +7,13 @@ datasets/
 ResNet-152-imagenet.tsv
 snapshots/
 MapGPT/datasets
+visualization/topdown_map/connectivity/*
+visualization/topdown_map/output_json_files/groundtruth_json_files/*
+visualization/topdown_map/output_json_files/mapgpt_json_files/*
+visualization/topdown_map/output_json_files/seq_json_files/*
+preds_200_216
+visualization/obs/tmp
+chromedriver/*
 # plots/
 # C extensions
 *.so
@@ -32,6 +39,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 Dockerfile
+visualization/topdown_map/matterport_mesh
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.

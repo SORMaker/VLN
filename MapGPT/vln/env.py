@@ -35,7 +35,7 @@ class EnvBatch(object):
         self.sims = []
         for i in range(batch_size):
             sim = MatterSim.Simulator()
-            if scan_data_dir:
+            if scan_data_dir:#？
                 sim.setDatasetPath(scan_data_dir)
             sim.setNavGraphPath(connectivity_dir)
             sim.setRenderingEnabled(False)

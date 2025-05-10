@@ -46,23 +46,36 @@ def plot_training_curves():
     fig, axes = plt.subplots(ncols=3, squeeze=True, figsize=(13,3.25))
     handles = []
     labels = []
+
     for i,(title, ylabel, x_vars) in enumerate(plots):
         for log in logs:
             df = dfs[log]
             x = df['iteration']
-            for col_name in x_vars:
-                y = df[col_name]
-                label = ' Train'
-                if 'unseen' in col_name:
-                    label = ' Val Unseen'
-                elif 'seen' in col_name:
-                    label = ' Val Seen'
+            if log == 'seq2seq_sample_imagenet_log.csv':
+                print(x_vars)
+                for col_name in x_vars:
+                    # print(col_name)
+                    y = df[col_name]
+                    
+                    label = ' Train'
+                    if 'unseen' in col_name:
+                        label = ' Val Unseen'
+                    elif 'seen' in col_name:
+                        label = ' Val Seen'
+                    if i == 0 and (col_name == 'train loss'):
+                        label = logs[log]+label
+                        labels.append(labels)
+                        # handles.append(axes[i].plot(x,y, colors[label], label=label))
+                        # print(y)
+                        axes[i].plot(x,y, colors[label], label=label)
+                    else:
+                        # axes[i].plot(x,y, colors[logs[log]+label], label=logs[log]+label)
+                        continue
+            else:
                 if i == 0:
-                    label = logs[log]+label
-                    labels.append(labels)
-                    handles.append(axes[i].plot(x,y, colors[label], label=label))
-                else:
-                    axes[i].plot(x,y, colors[logs[log]+label], label=logs[log]+label)
+                    y = df['train loss']
+                    label = ' Train'
+                    axes[i].plot(x,y, colors['Teacher-forcing Train'], label=label)
         axes[i].set_title(title)
         axes[i].set_xlabel('Iteration')
         axes[i].set_ylabel(ylabel)
@@ -123,7 +136,7 @@ def plot_final_scores():
 
 if __name__ == '__main__':
     plot_training_curves()
-    plot_final_scores()
+    # plot_final_scores()
 
 
 
